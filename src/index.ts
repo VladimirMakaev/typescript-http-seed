@@ -1,17 +1,11 @@
-#! /usr/bin/env node
-import * as commander from "commander";
-import { version, toolName, description } from "./metadata";
+import * as express from 'express';
+import { createApp } from './app';
 
+const port = process.env.PORT || 5000;
 
-commander
-    .version(version)
-    .description(description)
-    .name(toolName)
-    .option("-p, --param1 [param1]", "Parameter1. Use your parameters here")
-    .parse(process.argv);
+const app = createApp();
 
-
-console.log(`Add your logic to implement ${toolName}. Version : ${version}. Parameter: ${commander.param1}`);
+app.listen(port, () => console.log("Listening on port " + port));
 
 
 
